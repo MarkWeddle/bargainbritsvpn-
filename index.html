@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bargain Brits VPN — Before You Fly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0F1729;
+    --navy:#16213E;
+    --navy-soft:#1E2B4D;
+    --paper:#EDEAE0;
+    --paper-dim:#DCD8C9;
+    --red:#C22E2E;
+    --red-deep:#8E2020;
+    --brass:#B6924F;
+    --ink-on-navy:#EDEAE0;
+    --ink-muted:#9CA6BC;
+    --ink-on-paper:#181F33;
+    --green:#4C7A61;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--ink-on-navy);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink-on-navy);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em;}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--navy-deep);
+    border-bottom:1px solid rgba(182,146,79,0.25);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1040px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{
+    width:32px; height:19px;
+    display:block;
+    border-radius:2px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(182,146,79,0.4);
+  }
+  .brand-mark svg{width:100%; height:100%; display:block;}
+  .brand-name{font-family:'Spectral', serif; font-size:19px; letter-spacing:0.01em;}
+  .brand-name b{font-style:italic; color:var(--brass); font-weight:500;}
+  .adv-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--ink-muted);
+    border:1px solid rgba(156,166,188,0.35);
+    padding:4px 10px; border-radius:2px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 0;
+    overflow:hidden;
+  }
+  .hero-frame{
+    border:1px solid rgba(182,146,79,0.35);
+    padding:52px 48px 44px;
+    position:relative;
+  }
+  .hero-frame::before, .hero-frame::after{
+    content:"";
+    position:absolute; width:14px; height:14px;
+    border:1px solid var(--brass);
+  }
+  .hero-frame::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+  .hero-frame::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+  .ref-line{
+    font-size:12px; color:var(--brass);
+    letter-spacing:0.06em; margin-bottom:22px;
+    padding-right:170px;
+  }
+  .hero h1{
+    font-size:clamp(30px, 4.4vw, 48px);
+    line-height:1.18;
+    max-width:16ch;
+  }
+  .hero h1 em{font-style:italic; color:var(--brass); font-weight:500;}
+  .hero-sub{
+    max-width:52ch;
+    margin-top:22px;
+    font-size:17px;
+    color:var(--ink-muted);
+  }
+  .stamp{
+    position:absolute;
+    top:38px; right:44px;
+    width:118px; height:118px;
+    border:2.5px solid var(--red);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    color:var(--red);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; font-weight:600;
+    letter-spacing:0.03em;
+    transform:rotate(-14deg) scale(0);
+    animation:stampdown 0.5s cubic-bezier(.2,1.4,.4,1) 0.35s forwards;
+    line-height:1.35;
+    mix-blend-mode:normal;
+  }
+  @keyframes stampdown{
+    0%{transform:rotate(-14deg) scale(2.2); opacity:0;}
+    60%{transform:rotate(-14deg) scale(0.92); opacity:1;}
+    100%{transform:rotate(-14deg) scale(1); opacity:1;}
+  }
+  .cta-row{margin-top:34px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:15.5px;
+    padding:14px 26px;
+    border-radius:2px;
+    text-decoration:none;
+    border:1px solid var(--red);
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .btn:hover{background:var(--red-deep); transform:translateY(-1px);}
+  .price-note{font-size:13.5px; color:var(--ink-muted);}
+
+  /* torn edge */
+  .tear{
+    height:22px;
+    background:
+      radial-gradient(circle at 10px 0, transparent 10px, var(--navy) 10.5px) 0 -10px / 20px 20px repeat-x;
+  }
+  .tear.to-paper{
+    background:
+      radial-gradient(circle at 10px 0, transparent 10px, var(--paper) 10.5px) 0 -10px / 20px 20px repeat-x;
+  }
+  .tear.to-navy{
+    background:
+      radial-gradient(circle at 10px 20px, transparent 10px, var(--navy) 10.5px) 0 0 / 20px 20px repeat-x;
+  }
+
+  /* ---------- stats strip ---------- */
+  .stats{
+    background:var(--navy-soft);
+    padding:34px 0;
+  }
+  .stats-row{
+    display:flex; flex-wrap:wrap;
+  }
+  .stat{
+    flex:1 1 220px;
+    padding:6px 26px;
+    border-left:1px solid rgba(182,146,79,0.3);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:30px; font-weight:600; color:var(--brass);
+  }
+  .stat .lbl{font-size:13.5px; color:var(--ink-muted); margin-top:4px;}
+
+  /* ---------- risks / paper section ---------- */
+  section.paper{
+    background:var(--paper);
+    color:var(--ink-on-paper);
+    padding:64px 0 60px;
+  }
+  section.paper h2{color:var(--ink-on-paper); font-size:28px; max-width:22ch;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--brass); letter-spacing:0.04em;
+    margin-bottom:10px;
+  }
+  section.paper .kicker, .report-card .kicker, section.trust .kicker, section.faq .kicker{color:var(--red-deep); margin-bottom:14px;}
+  .risks{margin-top:38px; display:grid; grid-template-columns:1fr; gap:0;}
+  .risk{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid rgba(24,31,51,0.14);
+  }
+  .risk:last-child{border-bottom:1px solid rgba(24,31,51,0.14);}
+  .risk .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.04em;
+    color:var(--red-deep);
+    border:1px solid var(--red-deep);
+    padding:5px 8px;
+    height:fit-content;
+    text-align:center;
+  }
+  .risk p{margin:0; max-width:62ch; font-size:15.5px;}
+  .risk strong{font-family:'Spectral', serif; font-weight:600; font-size:17px; display:block; margin-bottom:6px;}
+
+  /* ---------- field report ---------- */
+  section.report{
+    background:var(--navy);
+    padding:64px 0 70px;
+  }
+  .report-card{
+    background:var(--paper);
+    color:var(--ink-on-paper);
+    padding:36px 38px;
+    max-width:640px;
+    transform:rotate(-0.6deg);
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+    border-left:4px solid var(--red-deep);
+  }
+  .report-card p{font-size:16px; margin:0 0 14px;}
+  .report-card p:last-child{margin-bottom:0;}
+  .sign{
+    font-family:'Spectral', serif; font-style:italic; font-size:16px;
+    margin-top:18px; color:var(--red-deep);
+  }
+
+  /* ---------- checklist / solution ---------- */
+  section.checklist{
+    background:var(--navy-soft);
+    padding:64px 0 60px;
+  }
+  section.checklist h2{max-width:20ch;}
+  .checklist-layout{
+    display:block;
+  }
+  .checklist-text{min-width:0;}
+  .device-mock{width:140px; height:280px; margin:0 auto 28px;}
+  .device-mock svg{width:100%; height:100%; display:block;}
+  @media (min-width:641px){
+    .checklist-layout{display:flex; gap:52px; align-items:flex-start;}
+    .checklist-text{flex:1 1 400px;}
+    .device-mock{flex:0 0 200px; width:200px; height:400px; margin:6px 0 0;}
+  }
+  .checklist-grid{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0;
+  }
+  .check-item{
+    padding:20px 20px 20px 0;
+    border-top:1px solid rgba(182,146,79,0.22);
+    display:flex; gap:14px;
+  }
+  .check-item:nth-child(odd){padding-right:28px;}
+  .check-item:nth-child(-n+2){border-top:none;}
+  .check-mark{
+    color:var(--green);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:16px; margin-top:2px;
+  }
+  .check-item strong{display:block; font-size:15.5px; margin-bottom:3px; font-family:'IBM Plex Sans'; font-weight:600;}
+  .check-item span{font-size:14.5px; color:var(--ink-muted);}
+
+  /* ---------- mid-page cta ---------- */
+  .mid-cta{
+    background:var(--navy-deep);
+    border-top:1px solid rgba(182,146,79,0.25);
+    border-bottom:1px solid rgba(182,146,79,0.25);
+    padding:26px 0;
+  }
+  .mid-cta .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  }
+  .mid-cta p{margin:0; font-size:16px; color:var(--ink-on-navy);}
+  .mid-cta .btn{padding:11px 22px; font-size:14.5px;}
+
+  /* ---------- comparison ---------- */
+  section.compare{
+    background:var(--navy);
+    padding:60px 0 70px;
+  }
+
+  /* ---------- trust section ---------- */
+  section.trust{
+    background:var(--paper);
+    color:var(--ink-on-paper);
+    padding:64px 0 60px;
+    position:relative;
+    overflow:visible;
+  }
+  section.trust h2{color:var(--ink-on-paper); max-width:26ch;}
+  .trust-row{
+    margin-top:36px;
+    display:flex; flex-wrap:wrap;
+  }
+  .trust-stat{
+    flex:1 1 200px;
+    padding:6px 26px;
+    border-left:1px solid rgba(24,31,51,0.16);
+  }
+  .trust-stat:first-child{border-left:none;}
+  .trust-stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px; font-weight:600; color:var(--red-deep);
+  }
+  .trust-stat .lbl{font-size:13.5px; color:#4A5064; margin-top:4px;}
+
+  .stamp-scroll{
+    position:absolute;
+    top:44px; right:48px;
+    width:112px; height:112px;
+    border:2.5px solid var(--green);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    color:var(--green);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; font-weight:600;
+    letter-spacing:0.03em;
+    opacity:0;
+    transform:rotate(10deg) scale(0.7);
+    line-height:1.3;
+  }
+  .stamp-scroll.in-view{
+    animation:stampdown2 0.5s cubic-bezier(.2,1.4,.4,1) forwards;
+  }
+  @keyframes stampdown2{
+    0%{transform:rotate(10deg) scale(0.7); opacity:0;}
+    60%{transform:rotate(10deg) scale(1.06); opacity:1;}
+    100%{transform:rotate(10deg) scale(1); opacity:1;}
+  }
+
+  /* ---------- FAQ ---------- */
+  section.faq{
+    background:var(--paper);
+    color:var(--ink-on-paper);
+    padding:64px 0 60px;
+  }
+  section.faq h2{color:var(--ink-on-paper); max-width:22ch;}
+  .faq-list{margin-top:34px;}
+  .faq-item{
+    padding:22px 0;
+    border-top:1px solid rgba(24,31,51,0.14);
+  }
+  .faq-item:last-child{border-bottom:1px solid rgba(24,31,51,0.14);}
+  .faq-item strong{
+    display:block; font-family:'Spectral', serif; font-weight:600;
+    font-size:17px; margin-bottom:8px;
+  }
+  .faq-item p{margin:0; font-size:15px; max-width:64ch; color:#3E445A;}
+  table.compare-table{
+    width:100%; border-collapse:collapse; margin-top:32px;
+    font-size:14.5px;
+  }
+  table.compare-table th, table.compare-table td{
+    text-align:left; padding:14px 14px;
+    border-bottom:1px solid rgba(182,146,79,0.22);
+  }
+  table.compare-table th{
+    font-family:'IBM Plex Mono', monospace; font-weight:600;
+    font-size:12.5px; color:var(--brass); letter-spacing:0.02em;
+  }
+  table.compare-table td.highlight{color:var(--brass); font-weight:600;}
+  table.compare-table tr.us{background:rgba(182,146,79,0.08);}
+
+  /* ---------- final cta ---------- */
+  section.final-cta{
+    background:var(--red-deep);
+    padding:60px 0;
+    text-align:center;
+  }
+  section.final-cta h2{color:#fff; font-size:30px; max-width:20ch; margin:0 auto;}
+  section.final-cta .price-note{color:rgba(255,255,255,0.8); margin-top:14px;}
+  section.final-cta .btn{background:#fff; color:var(--red-deep); border-color:#fff; margin-top:26px;}
+  section.final-cta .btn:hover{background:var(--paper);}
+
+  footer{
+    background:var(--navy-deep);
+    padding:34px 0 40px;
+    font-size:12.5px; color:var(--ink-muted);
+  }
+  footer .disclosure{max-width:60ch; margin-bottom:14px;}
+  footer .foot-brand{font-family:'Spectral', serif; font-style:italic; color:var(--brass); font-size:14px;}
+
+  @media (max-width:640px){
+    .hero-frame{padding:38px 24px 32px;}
+    .ref-line{padding-right:0;}
+    .stamp{
+      position:static;
+      width:92px; height:92px; font-size:10px;
+      margin:6px 0 22px auto;
+      animation:stampdown 0.5s cubic-bezier(.2,1.4,.4,1) 0.35s forwards;
+    }
+    .stats-row{flex-direction:column;}
+    .stat{border-left:none; border-top:1px solid rgba(182,146,79,0.3); padding:16px 0;}
+    .stat:first-child{border-top:none;}
+    .risk{grid-template-columns:1fr;}
+    .checklist-grid{grid-template-columns:1fr;}
+    .check-item:nth-child(odd){padding-right:0;}
+    .check-item:nth-child(-n+2){border-top:1px solid rgba(182,146,79,0.22);}
+    .check-item:first-child{border-top:none;}
+    table.compare-table{font-size:13px;}
+    .trust-row{flex-direction:column;}
+    .trust-stat{border-left:none; border-top:1px solid rgba(24,31,51,0.16); padding:16px 0;}
+    .trust-stat:first-child{border-top:none;}
+    .stamp-scroll{
+      position:static;
+      width:92px; height:92px; font-size:11px;
+      margin:20px 0 0 auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stamp{animation:none; transform:rotate(-14deg) scale(1); opacity:1;}
+    .stamp-scroll{animation:none !important; transform:rotate(10deg) scale(1) !important; opacity:1 !important;}
+    .btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="60" height="30" fill="#012169"/>
+          <line x1="0" y1="0" x2="60" y2="30" stroke="#FFFFFF" stroke-width="6.5"/>
+          <line x1="60" y1="0" x2="0" y2="30" stroke="#FFFFFF" stroke-width="6.5"/>
+          <line x1="0" y1="0" x2="60" y2="30" stroke="#C8102E" stroke-width="2.6"/>
+          <line x1="60" y1="0" x2="0" y2="30" stroke="#C8102E" stroke-width="2.6"/>
+          <rect x="24" y="0" width="12" height="30" fill="#FFFFFF"/>
+          <rect x="0" y="10.5" width="60" height="9" fill="#FFFFFF"/>
+          <rect x="26.5" y="0" width="7" height="30" fill="#C8102E"/>
+          <rect x="0" y="12.5" width="60" height="5" fill="#C8102E"/>
+        </svg>
+      </div>
+      <div class="brand-name"><b>Bargain</b> Brits VPN</div>
+    </div>
+    <div class="adv-tag">AD · affiliate advertisement</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-frame">
+      <div class="ref-line mono">WE BRITS LOVE A BARGAIN &nbsp;·&nbsp; SURFSHARK IS WIDELY RATED THE BEST-VALUE VPN ON THE MARKET</div>
+      <h1>Leave home without one, and your money, your identity, and your privacy are exposed.</h1>
+      <p class="hero-sub">Hotel WiFi can hand your bank logins to a stranger three tables away. Your own broadband provider is legally required to log everywhere you go for a year. Surfshark shuts both doors — for less than the price of a coffee a month.</p>
+      <div class="cta-row">
+        <a href="#" class="btn">Protect every device — from £2.09/mo</a>
+        <span class="price-note">2-year plan, paid upfront · 30-day money-back guarantee</span>
+      </div>
+      <div class="stamp">TIME<br>SENSITIVE<br>— READ<br>BEFORE<br>YOU FLY</div>
+    </div>
+  </div>
+</section>
+
+<div class="tear to-navy"></div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="num mono">1 in 4</div>
+        <div class="lbl">travellers say they've been hacked using public WiFi abroad</div>
+      </div>
+      <div class="stat">
+        <div class="num mono">78%</div>
+        <div class="lbl">don't use any VPN protection while connected to hotel or airport WiFi</div>
+      </div>
+      <div class="stat">
+        <div class="num mono">12 months</div>
+        <div class="lbl">how long UK law requires your broadband provider to keep a record of every site you visit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tear to-paper"></div>
+
+<section class="paper">
+  <div class="wrap">
+    <div class="kicker">THE THREE THINGS YOU'RE EXPOSED TO</div>
+    <h2>It's rarely about "hackers." It's about three very specific people and organisations seeing more than they should.</h2>
+
+    <div class="risks">
+      <div class="risk">
+        <div class="tag">MONEY</div>
+        <div>
+          <strong>Your banking session, sitting in plain text</strong>
+          <p>Most hotel and airport WiFi sends data unencrypted. A cheap device broadcasting a fake "Airport_Free_WiFi" signal can quietly sit between you and your banking app — capturing logins and card numbers without you noticing anything wrong until you're already home.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="tag">IDENTITY</div>
+        <div>
+          <strong>An identity theft mess that takes months to untangle</strong>
+          <p>UK identity fraud victims take an average of 7 months just to realise it's happened, and longer still to fully resolve it — hours on the phone to banks, replacing documents, and disputing charges. Doing that from a foreign hotel room is a different problem entirely to doing it from your own sofa.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="tag">PRIVACY</div>
+        <div>
+          <strong>Your broadband provider, logging where you go — by law</strong>
+          <p>Under the UK's Investigatory Powers Act, your internet provider can be required to keep a record of every site and service you connect to for up to 12 months, timestamped and tied to your account. A VPN encrypts that traffic and hides your IP address, so what gets logged is a Surfshark server — not your evening.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="report">
+  <div class="wrap">
+    <div class="report-card">
+      <div class="kicker">FIELD REPORT — FIRST-HAND</div>
+      <p>I use Surfshark every single day living in Thailand — mainly so I can still watch the shows I'd normally watch back home. It's also come with me to Benidorm and across Poland, connecting to hotel and café WiFi without a second thought.</p>
+      <p>It's not a "nice to have" for me anymore. It's the same category as locking your front door — you don't think about it until the day you didn't do it.</p>
+      <div class="sign">— Mark, Bargain Brits VPN</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="kicker">WHY TRUST SURFSHARK ITSELF</div>
+    <h2>Not just a landing page — a company with a real track record</h2>
+    <div class="trust-row">
+      <div class="trust-stat">
+        <div class="num mono">2018</div>
+        <div class="lbl">founded, now part of Nord Security's cybersecurity group since 2022</div>
+      </div>
+      <div class="trust-stat">
+        <div class="num mono"><a href="https://www.trustpilot.com/review/surfshark.com" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; border-bottom:1px dotted currentColor;">4.3★</a></div>
+        <div class="lbl">Trustpilot rating from over 25,000 reviews — see for yourself</div>
+      </div>
+      <div class="trust-stat">
+        <div class="num mono">2×</div>
+        <div class="lbl">independently audited by Deloitte for its no-logs policy (2023 and 2025)</div>
+      </div>
+      <div class="trust-stat">
+        <div class="num mono">Tom's Guide</div>
+        <div class="lbl">named "Best Cheap VPN" in their 2026 rankings</div>
+      </div>
+    </div>
+  </div>
+  <div class="stamp-scroll">PROTECTED<br>✓ VERIFIED</div>
+</section>
+
+<section class="checklist">
+  <div class="wrap">
+    <div class="checklist-layout">
+      <div class="checklist-text">
+        <div class="kicker">WHAT £2.09 A MONTH ACTUALLY BUYS</div>
+        <h2>The checklist a proper VPN needs to tick — and what Surfshark ticks</h2>
+        <div class="checklist-grid">
+          <div class="check-item">
+            <div class="check-mark">✓</div>
+            <div><strong>Unlimited devices, one price</strong><span>Every phone, laptop, tablet and smart TV in the family — covered under a single account, not charged per device.</span></div>
+          </div>
+          <div class="check-item">
+            <div class="check-mark">✓</div>
+            <div><strong>Independently audited no-logs policy</strong><span>Verified by Deloitte in both 2023 and 2025 — not just a promise on a webpage.</span></div>
+          </div>
+          <div class="check-item">
+            <div class="check-mark">✓</div>
+            <div><strong>Blocks trackers and malicious sites automatically</strong><span>CleanWeb filters ads, trackers and known malware domains before they reach you.</span></div>
+          </div>
+          <div class="check-item">
+            <div class="check-mark">✓</div>
+            <div><strong>Keeps UK streaming working, wherever you are</strong><span>Reliable access to the BBC iPlayer, ITVX and Netflix UK libraries you already pay for.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="device-mock" aria-hidden="true">
+        <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="192" height="392" rx="28" fill="none" stroke="#B6924F" stroke-width="2.5"/>
+          <rect x="20" y="34" width="160" height="332" rx="6" fill="#0F1729"/>
+          <circle cx="100" cy="20" r="2.5" fill="#B6924F"/>
+          <text x="100" y="68" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="15" fill="#B6924F">Bargain Brits VPN</text>
+          <line x1="40" y1="82" x2="160" y2="82" stroke="#2A3A63" stroke-width="1"/>
+          <circle cx="100" cy="150" r="46" fill="none" stroke="#4C7A61" stroke-width="3"/>
+          <path d="M82 150 l13 13 l24 -26" fill="none" stroke="#4C7A61" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="100" y="222" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600" fill="#EDEAE0">PROTECTED</text>
+          <text x="100" y="242" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9CA6BC">Connected — UK, London</text>
+          <rect x="40" y="270" width="120" height="26" rx="13" fill="#16213E" stroke="#2A3A63" stroke-width="1"/>
+          <circle cx="150" cy="283" r="9" fill="#4C7A61"/>
+          <text x="55" y="287" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9CA6BC">ON</text>
+          <text x="100" y="330" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6B7590">Unlimited devices · 1 account</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mid-cta">
+  <div class="wrap">
+    <p>Convinced already? No need to keep reading.</p>
+    <a href="#" class="btn">Get protected — from £2.09/mo</a>
+  </div>
+</div>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="kicker">HOW IT STACKS UP</div>
+    <h2 style="max-width:24ch;">Same protection, a fraction of the price — and no device limit to work around</h2>
+    <table class="compare-table">
+      <tr>
+        <th></th>
+        <th>Surfshark</th>
+        <th>NordVPN</th>
+        <th>ExpressVPN</th>
+      </tr>
+      <tr class="us">
+        <td>Devices at once</td>
+        <td class="highlight">Unlimited</td>
+        <td>10</td>
+        <td>8</td>
+      </tr>
+      <tr class="us">
+        <td>From (long-term plan)</td>
+        <td class="highlight">£2.09/mo</td>
+        <td>£2.99/mo</td>
+        <td>£3.49/mo</td>
+      </tr>
+      <tr class="us">
+        <td>No-logs audit</td>
+        <td class="highlight">Deloitte, 2x</td>
+        <td>Deloitte</td>
+        <td>Yes (audited)</td>
+      </tr>
+      <tr class="us">
+        <td>Money-back window</td>
+        <td class="highlight">30 days</td>
+        <td>30 days</td>
+        <td>30 days</td>
+      </tr>
+    </table>
+    <p class="price-note" style="margin-top:16px;">Prices correct as of 5 September 2026 · always double-check current deals on each provider's own site before buying, as VPN pricing changes frequently.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="kicker">BEFORE YOU ASK</div>
+    <h2>Four things people usually want to know first</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <strong>Will it slow my internet down?</strong>
+        <p>You may notice a small dip, but on Surfshark's WireGuard protocol most people don't notice it at all for browsing, streaming, or video calls.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Is using a VPN actually legal?</strong>
+        <p>Yes, in the UK and in the vast majority of places you're likely to travel — including the whole of Europe, the US, and popular destinations like Thailand. A small number of countries, including China, Russia and the UAE, restrict or ban VPN use, so it's worth a quick check if you're heading somewhere less common.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Will it work on my phone, not just my laptop?</strong>
+        <p>Yes. Surfshark has apps for iOS, Android, Windows, Mac and Linux, and unlimited devices means everything can run at once under one account — no juggling required.</p>
+      </div>
+      <div class="faq-item">
+        <strong>What if I sign up and don't get on with it?</strong>
+        <p>You're covered by Surfshark's 30-day money-back guarantee. Cancel within that window for a full refund, no questions asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Sort it before you pack, not after you've been caught out.</h2>
+    <p class="price-note">From £2.09/month on the 2-year plan · unlimited devices · 30-day money-back guarantee</p>
+    <a href="#" class="btn">Get Surfshark before your next trip</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclosure">This page contains an affiliate link. If you sign up through it, Bargain Brits VPN may earn a commission — at no extra cost to you. Pricing shown reflects Surfshark's current long-term introductory offer; renewal pricing is higher, as with all VPN subscriptions. Statistics cited are drawn from published cybersecurity research and UK legislation, correct as of 2026. Bargain Brits VPN is not affiliated with, endorsed by, or sponsored by any TV network, broadcaster, or streaming service.</p>
+    <div class="foot-brand">Bargain Brits VPN</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var stamps = document.querySelectorAll('.stamp-scroll');
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.35});
+      stamps.forEach(function(s){ obs.observe(s); });
+    } else {
+      stamps.forEach(function(s){ s.classList.add('in-view'); });
+    }
+  });
+</script>
+
+</body>
+</html>
